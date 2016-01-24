@@ -20,4 +20,4 @@ How neat would it be to have power-ups in a game based off of real nutrition dat
 ##Built With
 node.js, javascript, html, photoshop
 
-![Screenshot](https://github.com/randompast/Vitaman-Game/TitleScreen.png)
+![Screenshot](https://github.com/randompast/Vitaman-Game/blob/master/TitleScreen.png)
