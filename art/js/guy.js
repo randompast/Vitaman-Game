@@ -1,0 +1,15 @@
+var img = require('./img.js')
+module.exports = {
+    "guyjl": img(0)
+    ,"guyjr" : img(1)
+    ,"guywl" : img(2)
+    ,"guywr" : img(3)
+    ,"guyl" : img(4)
+    ,"guyr" : img(5)
+    ,"sweatleft": img(28)
+    ,"sweatright": img(27)
+    ,"health" : img(21)
+    ,"hydration" : img(22)
+    ,"youwin" : img(26)
+    ,"vitaman" : img(29)
+}
