@@ -1,12 +1,6 @@
 # Vitaman-Game
 A fun kid friendly nutrition oriented game.
 
-    git clone https://github.com/randompast/Vitaman-Game.git
-    cd Vitaman-Game
-    nvm use stable
-    budo --open --live index.js
-
-
 ##Installation
 
     git clone https://github.com/randompast/Vitaman-Game.git
