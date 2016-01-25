@@ -28,7 +28,8 @@ How neat would it be to have power-ups in a game based off of real nutrition dat
     
 * [mikolalysenko for box-intersect](https://github.com/mikolalysenko/box-intersect)
 * [hughsk for canvas-fit](https://github.com/hughsk/canvas-fit)
-
+* [blabla12201 for the theme song](https://twitter.com/blabla12201)
+* 
 ##Built With
 node.js, javascript, html, photoshop
 
