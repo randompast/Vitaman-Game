@@ -1,6 +1,8 @@
 # Vitaman-Game
 A fun kid friendly nutrition oriented game.
 
+[Live Demo](http://randompast.github.io/Vitaman-Game/)  (Warning, autoplay music might be a tad loud.)
+
 ##Installation
 
     git clone https://github.com/randompast/Vitaman-Game.git
