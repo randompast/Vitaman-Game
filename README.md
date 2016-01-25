@@ -1,7 +1,8 @@
 # Vitaman-Game
 A fun kid friendly nutrition oriented game. This is our hackathon submission. We worked around the clock and implemented all of our originally planned features and more. It was a real group effort with lots of fun and frustration.
 
-[Live Demo](http://randompast.github.io/Vitaman-Game/)  (Warning, autoplay music might be a tad loud.)
+##Live Demo
+[Play Now!](http://randompast.github.io/Vitaman-Game/)  (Warning, autoplay music might be a tad loud.)
 
     Arrow keys to move, space to jump
     Collect produce and water
