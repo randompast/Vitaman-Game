@@ -1,6 +1,7 @@
+//You should really never do this with the audioContext
 var AudioContext = window.AudioContext || window.webkitAudioContext;
 var audioContext = new AudioContext();
-var die = function(){ var input = audioContext.createGain();  var feedback = audioContext.createGain();  var delay = audioContext.createDelay();  ;  var output = audioContext.createGain();  ;  delay.delayTime.value = 0.2;  feedback.gain.value = 0.6;  input.connect(delay);  ;  output.connect(audioContext.destination);  input.connect(output);  input.connect(delay);  delay.connect(feedback);  feedback.connect(delay);  feedback.connect(output);  ;  play(0, -3, 0.05);  play(0.05, 2, 0.05);  play(0.1, 9, 0.05);  play(0.15, 14, 0.05);  play(0.2, 9, 0.05);  play(0.25, 2, 0.05);  play(0.3, -3, 0.05);  play(0.35, 7, 0.05);  play(0.4, 14, 0.05);  play(0.45, 18, 0.05);  play(0.5, 9, 0.05);  play(0.55, 2, 0.05);  ;  function play (startAfter, pitch, duration) {;    var time = audioContext.currentTime + startAfter;  ;    var oscillator = audioContext.createOscillator();    oscillator.connect(input) ;  oscillator.type = 'square';    oscillator.detune.value = pitch * 100;  ;    oscillator.start(time);    oscillator.stop(time + duration);  };};// 
+var die = function(){ var input = audioContext.createGain();  var feedback = audioContext.createGain();  var delay = audioContext.createDelay();  ;  var output = audioContext.createGain();  ;  delay.delayTime.value = 0.2;  feedback.gain.value = 0.6;  input.connect(delay);  ;  output.connect(audioContext.destination);  input.connect(output);  input.connect(delay);  delay.connect(feedback);  feedback.connect(delay);  feedback.connect(output);  ;  play(0, -3, 0.05);  play(0.05, 2, 0.05);  play(0.1, 9, 0.05);  play(0.15, 14, 0.05);  play(0.2, 9, 0.05);  play(0.25, 2, 0.05);  play(0.3, -3, 0.05);  play(0.35, 7, 0.05);  play(0.4, 14, 0.05);  play(0.45, 18, 0.05);  play(0.5, 9, 0.05);  play(0.55, 2, 0.05);  ;  function play (startAfter, pitch, duration) {;    var time = audioContext.currentTime + startAfter;  ;    var oscillator = audioContext.createOscillator();    oscillator.connect(input) ;  oscillator.type = 'square';    oscillator.detune.value = pitch * 100;  ;    oscillator.start(time);    oscillator.stop(time + duration);  };};//
 var junksound = function(){var filter = audioContext.createBiquadFilter() ;  filter.connect(audioContext.destination) ;  filter.type = 'lowpass' ;  filter.frequency.value = 10000 ;   ;  play(0, 14, 0.12) ;   ;  function play (delay, pitch, duration) { ;    var startTime = audioContext.currentTime + delay ;    var endTime = startTime + duration ;   ;   ;    var oscillator = audioContext.createOscillator() ;    oscillator.connect(filter) ;   ;   ;    oscillator.type = 'sawtooth' ;    oscillator.detune.value = pitch * 100 ;   ;   ;    oscillator.start(startTime) ;    oscillator.stop(endTime) ;  };}
 var foodsound = function(){ var filter = audioContext.createBiquadFilter() ;filter.connect(audioContext.destination) ;filter.type = 'lowpass' ;filter.frequency.value = 10000 ; ;play(0, 15, 0.12) ; ;function play (delay, pitch, duration) { ;  var startTime = audioContext.currentTime + delay ;  var endTime = startTime + duration ; ; ;  var oscillator = audioContext.createOscillator() ;  oscillator.connect(filter) ; ; ;  oscillator.type = 'sawtooth' ;  oscillator.detune.value = pitch * 100 ; ; ;  oscillator.start(startTime) ;  oscillator.stop(endTime);} }
 var fanfare = function(){ var filter = audioContext.createBiquadFilter() ;filter.connect(audioContext.destination) ;filter.type = 'lowpass' ;filter.frequency.value = 10000 ; ;play(0, 0, 0.1) ;play(0.2, 5, 0.1) ;play(0.32, 10, 1); ; ;function play (delay, pitch, duration) { ;  var startTime = audioContext.currentTime + delay ;  var endTime = startTime + duration ; ; ;  var oscillator = audioContext.createOscillator() ;  oscillator.connect(filter) ; ; ;  oscillator.type = 'sawtooth' ;  oscillator.detune.value = pitch * 100 ; ; ;  oscillator.start(startTime) ;  oscillator.stop(endTime) ;} }
@@ -45,34 +46,29 @@ Player.prototype.setImage = function(keysDown, time){
     } else if(this.dir === "right"){
         this.image = this.moving && keysDown[39] ? this.images.guywr : this.images.guyr
         this.image = this.jumping ? this.images.guyjr : this.image
-    } 
+    }
 }
 
-Player.prototype.tryHorizontal = function(keysDown, level, dx){
-    return !level.collision([this.pos[0]+this.offset[0]+dx, this.pos[1]+this.offset[1], 
-        this.pos[0]+this.offset[0]+this.sizebox[0]+dx, this.pos[1]+this.offset[1]+this.sizebox[1]])
-}
-
-Player.prototype.tryVertical = function(keysDown, level, dy){
-    return !level.collision([this.pos[0] + this.offset[0], this.pos[1] + this.offset[1] + dy, 
-        this.pos[0] + this.offset[0] + this.sizebox[0], this.pos[1] + this.offset[1] + this.sizebox[1] + dy])
+Player.prototype.tryMove = function(keysDown, level, dx, dy){
+    return !level.collision([this.pos[0]+this.offset[0]+dx, this.pos[1]+this.offset[1] + dy,
+        this.pos[0]+this.offset[0]+this.sizebox[0]+dx, this.pos[1]+this.offset[1]+this.sizebox[1] + dy])
 }
 
 Player.prototype.move = function(keysDown, level){
     if(keysDown[37]){
-        this.pos[0] = this.tryHorizontal(keysDown, level, -this.speed) ? this.pos[0] - this.speed : this.pos[0]
+        this.pos[0] = this.tryMove(keysDown, level, -this.speed, 0) ? this.pos[0] - this.speed : this.pos[0]
     } else if(keysDown[39]){
-        this.pos[0] = this.tryHorizontal(keysDown, level, this.speed) ? this.pos[0] + this.speed : this.pos[0]
+        this.pos[0] = this.tryMove(keysDown, level, this.speed, 0) ? this.pos[0] + this.speed : this.pos[0]
     }
-    
+
     if(keysDown[32] && this.jumptime > 0){
         this.jumping = true
-        this.pos[1] = this.tryVertical(keysDown, level, -this.speed*1.2) ? this.pos[1] - this.speed*1.2 : this.pos[1]
+        this.pos[1] = this.tryMove(keysDown, level, 0, -this.speed*1.2) ? this.pos[1] - this.speed*1.2 : this.pos[1]
         this.jumptime--
     } else {
         this.jumping = false
         this.jumptime = 0
-        if(this.tryVertical(keysDown, level, +this.speed*1.2)){
+        if(this.tryMove(keysDown, level, 0, this.speed*1.2)){
             this.pos[1] += this.speed*1.2
         } else {
             this.jumptime = this.jumpHeight
@@ -81,28 +77,28 @@ Player.prototype.move = function(keysDown, level){
 }
 
 Player.prototype.collect = function(level){
-    var item = level.collection([this.pos[0]+this.offset[0], this.pos[1]+this.offset[1], 
+    var item = level.collection([this.pos[0]+this.offset[0], this.pos[1]+this.offset[1],
         this.pos[0]+this.offset[0]+this.sizebox[0], this.pos[1]+this.offset[1]+this.sizebox[1]])
     if (item){
         switch(item[0]){
-            case "apple" : 
-            case "banana" : 
-            case "brocoli" : 
-            case "carrot" : 
-            case "orange" : 
-            case "strawberry" : 
+            case "apple" :
+            case "banana" :
+            case "brocoli" :
+            case "carrot" :
+            case "orange" :
+            case "strawberry" :
             case "watermelon" :
                 this.health += 0.2
                 this.hydration += 0.1
                 foodsound()
                 break
-            case "water" : 
+            case "water" :
                 this.hydration += 0.5
                 foodsound()
                 break
-            case "candy" :  
-            case "chocolate" : 
-            case "icecream" : 
+            case "candy" :
+            case "chocolate" :
+            case "icecream" :
                 this.health -= 0.1
                 this.hydration -= 0.2
                 junksound()
@@ -114,7 +110,7 @@ Player.prototype.collect = function(level){
 
 Player.prototype.victory = function(level){
     var dy = 16
-    var win = level.victory([this.pos[0] + this.offset[0], this.pos[1] + this.offset[1] + dy, 
+    var win = level.victory([this.pos[0] + this.offset[0], this.pos[1] + this.offset[1] + dy,
         this.pos[0] + this.offset[0] + this.sizebox[0], this.pos[1] + this.offset[1] + this.sizebox[1] + dy])
     if (win){
         if (this.end === false ){
@@ -140,7 +136,7 @@ Player.prototype.update = function(canvas, ctx, keysDown, time, level){
     this.draw(canvas, ctx)
     this.collect(level)
     this.victory(level)
-    
+
 
     if (!this.title){
         if(this.hydration > 0 && !this.end){
@@ -149,7 +145,7 @@ Player.prototype.update = function(canvas, ctx, keysDown, time, level){
         if(this.health > 0 && this.hydration <= 0 && !this.end){
             this.health -= this.craving
         }
-        
+
         if(this.health < 0.5 && this.dangerSoundDelay < 0){
             dangerSound()
             this.dangerSoundDelay = 50

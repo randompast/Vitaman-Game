@@ -4,14 +4,12 @@
   "description": "nutrition game",
   "main": "game.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "budo --open --live index.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "box-intersect": "^1.0.1",
-    "canvas-fit": "^1.5.0",
-    "html5-gamepad": "^0.1.1",
-    "keyboardjs": "^2.2.0"
+    "canvas-fit": "^1.5.0"
   }
 }
