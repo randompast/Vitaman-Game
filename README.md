@@ -3,7 +3,9 @@ A fun kid friendly nutrition oriented game.
 
 [Live Demo](http://randompast.github.io/Vitaman-Game/)  (Warning, autoplay music might be a tad loud.)
 
-    arrow keys to move, space to jump
+    Arrow keys to move, space to jump
+    Collect produce and water
+    Avoid sweets and falling
 
 ##Installation
 
