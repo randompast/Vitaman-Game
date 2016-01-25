@@ -15,11 +15,11 @@ A fun kid friendly nutrition oriented game. This is our hackathon submission. We
     budo --open --live index.js
 
 ##Hackathoners
-* [Asset Integration - randompast](https://github.com/randompast)
-* [Art - boktay10](https://github.com/boktay10)
-* [Audio Effects - jkcoder](https://github.com/jkcoder)
-* [Level Design, backup - 24ari](https://github.com/24ari)
-* [Game Design, Nutrition Facts - kenny014](https://github.com/kenny014)
+    * [randompast - Game Logic, Asset Integration](https://github.com/randompast)
+    * [boktay10 - Art, Design](https://github.com/boktay10)
+    * [jkcoder - Audio Effects, Design](https://github.com/jkcoder)
+    * [24ari - Level Design, Backup with phaser, Asset Integration](https://github.com/24ari)
+    * [kenny014 - Game Design, Nutrition Data/Facts, Asset Integration](https://github.com/kenny014)
 
 ###Special Thanks
     
