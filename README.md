@@ -26,7 +26,7 @@ A fun kid friendly nutrition oriented game. This is our hackathon submission. We
 * [mikolalysenko for box-intersect](https://github.com/mikolalysenko/box-intersect)
 * [hughsk for canvas-fit](https://github.com/hughsk/canvas-fit)
 * [blabla12201 for the theme song](https://twitter.com/blabla12201)
-* 
+
 ##Built With
 node.js, javascript, html, photoshop
 
