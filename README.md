@@ -13,6 +13,18 @@ A fun kid friendly nutrition oriented game.
 ##Inspiration
 How neat would it be to have power-ups in a game based off of real nutrition data? We worked around the clock and implemented all of our originally planned features and more. It was a real group effort with lots of fun and frustration.
 
+##Hackathoners
+* [Asset Integration - randompast](https://github.com/randompast)
+* [Art - boktay10](https://github.com/boktay10)
+* [Audio Effects - jkcoder](https://github.com/jkcoder)
+* [Level Design, backup - 24ari](https://github.com/24ari)
+* [Game Design, Nutrition Facts - kenny014](https://github.com/kenny014)
+
+###Special Thanks
+    
+* [mikolalysenko for box-intersect](https://github.com/mikolalysenko/box-intersect)
+* [hughsk for canvas-fit](https://github.com/hughsk/canvas-fit)
+
 ##Built With
 node.js, javascript, html, photoshop
 
